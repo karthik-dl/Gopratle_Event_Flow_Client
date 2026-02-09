@@ -52,8 +52,6 @@ export default function Type({ formData, setFormData, back, resetForm }) {
       details
     };
 
-    /* ---------- Submit ---------- */
-
     const API_URL= process.env.NEXT_PUBLIC_API_URL
     try {
       const res = await fetch(`${API_URL}/api/requirements`, {

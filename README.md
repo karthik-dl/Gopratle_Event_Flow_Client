@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Tech Stack
+1. Next.js (App Router)
+2. React
+3. TypeScript
+4. Fetch API
 
-## Getting Started
+Project Objective
+The goal of this frontend is to:
+1. Collect event requirement details through a multi-step form
+2. Dynamically change form steps based on user selection
+3. Send structured data to the backend for storage in MongoDB
+4. Clearly categorize requirements by type (planner / performer / crew)
 
-First, run the development server:
+Application Flow Overview:
+The entire flow is implemented inside a single page using a step-based approach.
+     Step 1 → Step 2 → Step 3 → Step 4 → Submit
+Only one step is visible at a time, controlled by a step state variable.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Step 1: Event Details
+In the first step, the user enters basic event information.
+Inputs collected:
+    Event Name
+    Event Type (Wedding, Concert, Corporate, etc.)
+    Event Date
+    Location (City)
+    Venue (optional)
+These values are stored in a shared formData state object and carried forward through all steps.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Step 2: Select Who to Hire
+In the second step, the user selects who they want to hire.
+Options:
+    Event Planner
+    Performer
+    Crew
+The selected option is stored as:
+    hireType: "planner" | "performer" | "crew"
+This value determines the behavior of the next step.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Step 3: Conditional Requirement Details
+The third step is dynamic and changes based on the selected hireType.
+Conditional inputs:
+    Event Planner
+    Budget range
+    Performer
+    Performer type (DJ, Singer, Band)
+    Performance duration
+    Crew
+    Crew type (Photography, Lighting, Security)
+    Number of people required
 
-## Learn More
+Only the relevant inputs are shown based on the user’s selection.
+The collected data is stored inside a flexible details object.
+This conditional rendering is the core requirement of the assignment.
 
-To learn more about Next.js, take a look at the following resources:
+Step 4: Review & Submit
+In the final step, the user is shown a review screen displaying all collected data.
+The data shown is exactly what will be sent to the backend On clicking Submit, the data is sent via a POST request to the backend API.
+The backend stores the data in MongoDB and categorizes it using hireType
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Example Data Sent to Backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+{
+  "eventName": "College Fest",
+  "eventType": "College Event",
+  "location": "Mysore",
+  "hireType": "performer",
+  "details": {
+    "performerType": "DJ",
+    "duration": "3 hours"
+  }
+}
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Installation & Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Follow the steps below to run the frontend locally.
+Prerequisites
+    Node.js (LTS version)
+    npm
+
+Verify installation:
+    node -v
+    npm -v
+
+Clone the Repository
+    git clone <your-github-repo-url>
+    cd requirement-posting/client
+
+Install Dependencies
+    npm install
+
+Run the Application
+    npm run dev
