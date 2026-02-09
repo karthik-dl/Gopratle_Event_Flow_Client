@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <div style={container}>
       <h2 style={heading}>Post a Requirement</h2>
-
+      
       {step === 1 && (
         <EventDetails
           setFormData={setFormData}

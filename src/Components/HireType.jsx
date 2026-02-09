@@ -1,5 +1,5 @@
 "use-client";
-import { button, secondaryButton } from "../app/Style.js";
+import { heading,button, secondaryButton } from "../app/Style.js";
 
 export default function HireType({ setFormData, next, back }) {
   const selectType = (type) => {
@@ -9,6 +9,7 @@ export default function HireType({ setFormData, next, back }) {
 
   return (
     <>
+      <h2 style={heading}>Select The HireType</h2>
       <button style={button} onClick={() => selectType("planner")}>Event Planner</button>
 
       <button style={button} onClick={() => selectType("performer")}>Performer</button>

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import {input, button} from "../app/Style.js";
+import {heading,input, button} from "../app/Style.js";
 
 export default function EventDetails({ setFormData, next }) {
   const [event, setEvent] = useState({});
 
   return (
     <>
+    <h2 style={heading}>Enter the Event Details</h2>
       <input style={input} placeholder="Event Name"
         onChange={e => setEvent({ ...event, name: e.target.value })}/>
 
