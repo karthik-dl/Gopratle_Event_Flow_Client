@@ -15,14 +15,17 @@ export default function EventDetails({ setFormData, next }) {
       <input style={input} placeholder="Event Type"
         onChange={e => setEvent({ ...event, type: e.target.value })}/>
 
-      <input style={input} type="date"
+      <input style={input} type="date" placeholder="Select the start date"
         onChange={e => setEvent({ ...event, startDate: e.target.value })}/>
+
+      <input style={input} type="date" placeholder="Select the end date"
+        onChange={e => setEvent({ ...event, endDate: e.target.value })}/>
 
       <input style={input} placeholder="Location"
         onChange={e => setEvent({ ...event, location: e.target.value })}/>
 
       <input style={input} placeholder="Venue"
-        onChange={e => setEvent({ ...event, location: e.target.value })}/>
+        onChange={e => setEvent({ ...event, venue: e.target.value })}/>
 
       <button style={button} onClick={() => {
         setFormData(prev => ({ ...prev, eventDetails: event }));

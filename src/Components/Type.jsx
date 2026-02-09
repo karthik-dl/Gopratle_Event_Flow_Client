@@ -46,6 +46,7 @@ export default function Type({ formData, setFormData, back, resetForm }) {
       eventName: formData.eventDetails.name,
       eventType: formData.eventDetails.type,
       startDate: formData.eventDetails.startDate,
+      endDate: formData.eventDetails.endDate,
       location: formData.eventDetails.location,
       venue: formData.eventDetails.venue || "",
       hireType: formData.hireType,
