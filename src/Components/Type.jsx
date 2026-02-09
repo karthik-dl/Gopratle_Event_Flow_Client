@@ -53,8 +53,10 @@ export default function Type({ formData, setFormData, back, resetForm }) {
     };
 
     /* ---------- Submit ---------- */
+
+    const API_URL= process.env.NEXT_PUBLIC_API_URL
     try {
-      const res = await fetch("http://localhost:5000/api/requirements", {
+      const res = await fetch(`${API_URL}/api/requirements`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
